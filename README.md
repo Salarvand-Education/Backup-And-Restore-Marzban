@@ -20,42 +20,19 @@ This is a Telegram bot designed to backup and restore Marzban files and database
 
 ## Installation
 
-1. Clone the repository:
+1. download and unzip and remove zip file and edit .env
 
     ```bash
-    git clone 
-    cd <repository-directory>
+     mkdir Backup-And-Restore && cd Backup-And-Restore &&wget https://raw.githubusercontent.com/Salarvand-Education/Backup-And-Restore-marzban/main/Backup-And-Restore.zip && unzip Backup-And-Restore.zip && rm -r Backup-And-Restore.zip && pip install -r requirements.txt && nano .env
     ```
-## unzip file And remove zip file
-
-2. unzip And remov zip file
-
-```bash
-unzip backup-And-restore.zip
-rm -r backup-And-restore.zip
-```
-
-3. Create a virtual environment and activate it:
-
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-
-4. Install the required packages:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-5. Create a `.env` file in the root directory of the project and add your bot token and admin chat ID:
+2. Create a `.env` file in the root directory of the project and add your bot token and admin chat ID:
 
     ```bash
     BOT_TOKEN=your-bot-token
     ADMIN_CHAT_ID=your-admin-chat-id
     ```
 
-6. Run the bot:
+3. Run the bot:
 
     ```bash
    nohup python3 bot.py &
