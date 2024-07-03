@@ -27,10 +27,10 @@ This is a Telegram bot designed to backup and restore Marzban files and database
     ```
 2. Edit `.env` file in the Backup-And-Restore directory of the project and add your bot token and admin chat ID:
 
-    ```bash
+    ```env
     BOT_TOKEN=your-bot-token
     ADMIN_CHAT_ID=your-admin-chat-id
-    ```
+    
 
 3. Run the bot:
 
@@ -53,10 +53,3 @@ This is a Telegram bot designed to backup and restore Marzban files and database
 3. To restore from a backup, send the `/restore` command and then upload the backup file.
 4. The bot will restore the Marzban files and database and notify you upon completion.
 
-## Environment Variables
-
-The bot uses a `.env` file to manage sensitive information. Create a `.env` file in the root directory and add the following variables:
-
-```env
-BOT_TOKEN=your-bot-token
-ADMIN_CHAT_ID=your-admin-chat-id
