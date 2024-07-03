@@ -30,7 +30,6 @@ This is a Telegram bot designed to backup and restore Marzban files and database
     ```env
     BOT_TOKEN=your-bot-token
     ADMIN_CHAT_ID=your-admin-chat-id
-    
 
 3. Run the bot:
 
