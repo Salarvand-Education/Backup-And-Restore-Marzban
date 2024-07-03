@@ -28,7 +28,7 @@ This is a Telegram bot designed to backup and restore Marzban files and database
     ```
 ## unzip file And remove zip file
 
-2.unzip And remov zip file
+2. unzip And remov zip file
 
 ```bash
 unzip backup-And-restore.zip
