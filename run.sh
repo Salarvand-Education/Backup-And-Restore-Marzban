@@ -18,7 +18,7 @@ create_env_file() {
 create_systemd_service() {
     echo "Creating systemd service..."
     SERVICE_FILE="/etc/systemd/system/marzban-backup-restore.service"
-    WORKING_DIR=/root/Backup-And-Restore-Marzban
+    WORKING_DIR=/root/Marzban-Backup-Restore/Backup-And-Restore-Marzban
     ENV_FILE=$WORKING_DIR/.env
     EXEC_START=/usr/bin/python3 $WORKING_DIR/bot.py
 
@@ -47,12 +47,15 @@ EOL
 # Function to install the bot
 install_bot() {
     echo "Installing the bot..."
+    mkdir -p /root/Marzban-Backup-Restore
     cd /root/Marzban-Backup-Restore
+    git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
+    cd Backup-And-Restore-Marzban
     create_env_file
-    pip install -r requirements.txt
+    pip install -r /root/Marzban-Backup-Restore/Backup-And-Restore-Marzban/requirements.txt
     sudo chmod +x bot.py
-    sudo chown -R root:root /root/Backup-And-Restore-Marzban
-    sudo chmod -R 755 /root/Backup-And-Restore-Marzban
+    sudo chown -R root:root /root/Marzban-Backup-Restore
+    sudo chmod -R 755 /root/Marzban-Backup-Restore
     create_systemd_service
     echo "Bot installed."
 }
@@ -65,9 +68,10 @@ update_bot() {
     rm -rf Backup-And-Restore-Marzban
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
+    pip install -r /root/Marzban-Backup-Restore/Backup-And-Restore-Marzban/requirements.txt
     sudo chmod +x bot.py
-    sudo chown -R root:root /root/Backup-And-Restore-Marzban
-    sudo chmod -R 755 /root/Backup-And-Restore-Marzban
+    sudo chown -R root:root /root/Marzban-Backup-Restore
+    sudo chmod -R 755 /root/Marzban-Backup-Restore
     sudo systemctl start marzban-backup-restore.service
     echo "Bot updated and running."
 }
