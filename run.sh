@@ -18,21 +18,26 @@ create_env_file() {
 create_systemd_service() {
     echo "Creating systemd service..."
     SERVICE_FILE="/etc/systemd/system/marzban-backup-restore.service"
+    WORKING_DIR=/root/Backup-And-Restore-Marzban
+    ENV_FILE=$WORKING_DIR/.env
+    EXEC_START=/usr/bin/python3 $WORKING_DIR/bot.py
+
     sudo bash -c "cat > $SERVICE_FILE" <<EOL
 [Unit]
 Description=Marzban Backup and Restore Bot
 After=network.target
 
 [Service]
-WorkingDirectory=/path/to/Marzban-Backup-Restore/Backup-And-Restore-Marzban
-ExecStart=/usr/bin/python3 /path/to/Marzban-Backup-Restore/Backup-And-Restore-Marzban/bot.py
+WorkingDirectory=$WORKING_DIR
+ExecStart=$EXEC_START
 Restart=always
-User=your_user
-EnvironmentFile=/path/to/Marzban-Backup-Restore/Backup-And-Restore-Marzban/.env
+User=root
+EnvironmentFile=$ENV_FILE
 
 [Install]
 WantedBy=multi-user.target
 EOL
+
     sudo systemctl daemon-reload
     sudo systemctl enable marzban-backup-restore.service
     sudo systemctl start marzban-backup-restore.service
@@ -42,6 +47,8 @@ EOL
 # Function to install the bot
 install_bot() {
     echo "Installing the bot..."
+    mkdir -p /root/Marzban-Backup-Restore
+    cd /root/Marzban-Backup-Restore
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
     create_env_file
@@ -53,13 +60,13 @@ install_bot() {
 # Function to update the bot
 update_bot() {
     echo "Updating the bot..."
-    cd Marzban-Backup-Restore
+    cd /root/Marzban-Backup-Restore
     sudo systemctl stop marzban-backup-restore.service
     rm -rf Backup-And-Restore-Marzban
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
-    echo "Bot updated. Running the bot now..."
     sudo systemctl start marzban-backup-restore.service
+    echo "Bot updated and running."
 }
 
 # Function to remove the bot
@@ -69,7 +76,7 @@ remove_bot() {
     sudo systemctl disable marzban-backup-restore.service
     sudo rm /etc/systemd/system/marzban-backup-restore.service
     sudo systemctl daemon-reload
-    rm -rf Marzban-Backup-Restore
+    rm -rf /root/Marzban-Backup-Restore
     echo "Bot removed."
 }
 
