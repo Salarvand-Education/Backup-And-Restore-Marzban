@@ -3,9 +3,6 @@
 # Exit on any error
 set -e
 
-# Print commands and their arguments as they are executed
-set -x
-
 # Function to create .env file
 create_env_file() {
     echo "Creating .env file..."
@@ -20,21 +17,20 @@ create_env_file() {
 # Function to install the bot
 install_bot() {
     echo "Installing the bot..."
-    mkdir -p Marzban-Backup-Restore
-    cd Marzban-Backup-Restore
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
     create_env_file
     pip install -r requirements.txt
-    echo "Bot installed. You can now run it using 'python bot.py'"
+    nohup python3 bot.py &
+    echo "Bot installed."
 }
 
 # Function to update the bot
 update_bot() {
     echo "Updating the bot..."
-    rm -rf Marzban-Backup-Restore
-    mkdir -p Marzban-Backup-Restore
-    cd Marzban-Backup-Restore
+    cd Backup-And-Restore-Marzban
+    pkill -f bot.py 
+    rm -rf Backup-And-Restore-Marzban
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
     echo "Bot updated. Running the bot now..."
@@ -45,6 +41,7 @@ update_bot() {
 remove_bot() {
     echo "Removing the bot..."
     rm -rf Marzban-Backup-Restore
+    pkill -f bot.py
     echo "Bot removed."
 }
 
