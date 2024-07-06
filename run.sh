@@ -47,12 +47,10 @@ EOL
 # Function to install the bot
 install_bot() {
     echo "Installing the bot..."
-    mkdir -p /root/Marzban-Backup-Restore
-    cd /root/Marzban-Backup-Restore
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
     create_env_file
-    pip install -r /root/Marzban-Backup-Restore/Backup-And-Restore-Marzban/requirements.txt
+    pip install -r /root/Backup-And-Restore-Marzban/requirements.txt
     sudo chmod +x bot.py
     sudo chown -R root:root /root/Marzban-Backup-Restore
     sudo chmod -R 755 /root/Marzban-Backup-Restore
