@@ -1,7 +1,5 @@
 
 
-Here's the English version of the `README.md` file:
-
 ```markdown
 # Marzban Backup and Restore Bot
 
