@@ -16,7 +16,7 @@ To install the bot, follow these steps:
 1. Clone the repository and navigate to the project directory:
 
     ```sh
-rm -r Backup-And-Restore-Marzban && git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git && cd Backup-And-Restore-Marzban
+ rm -r Backup-And-Restore-Marzban && git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git && cd Backup-And-Restore-Marzban
     ```
 
 2. Run the `run.sh` script and choose "1) Install the bot":
