@@ -1,54 +1,75 @@
-# Marzban Backup & Restore Telegram Bot
+[python]
 
-This is a Telegram bot designed to backup and restore Marzban files and database. The bot can send backups to a specified Telegram chat and restore backups on command.
+Here's the English version of the `README.md` file:
 
-## Features
+```markdown
+# Marzban Backup and Restore Bot
 
-- Backup Marzban files and database.
-- Send backups to a specified Telegram chat.
-- Restore backups from a file sent via Telegram.
-- Configurable backup interval.
-- Uses a `.env` file to securely manage bot token and admin chat ID.
+This project includes a Telegram bot used for backing up and restoring Marzban data.
 
-## Requirements
+## Prerequisites
 
-- Python 3.7+
-- `python-dotenv` package
-- `python-telegram-bot` package
-- `schedule` package
-- `nest_asyncio` package
+- Python 3.x
+- pip (Python package installer)
+- Git
 
 ## Installation
 
-1. download and unzip and remove zip file and edit .env
+To install the bot, follow these steps:
 
-    ```bash
-     mkdir Backup-And-Restore && cd Backup-And-Restore && wget https://raw.githubusercontent.com/Salarvand-Education/Backup-And-Restore-marzban/main/Backup-And-Restore.zip && unzip Backup-And-Restore.zip && rm -r Backup-And-Restore.zip && pip install -r requirements.txt && nano .env
-    ```
-2. Edit `.env` file in the Backup-And-Restore directory of the project and add your bot token and admin chat ID:
+1. Clone the repository and navigate to the project directory:
 
-    ```env
-    BOT_TOKEN=your-bot-token
-    ADMIN_CHAT_ID=your-admin-chat-id
-
-3. Run the bot:
-
-    ```bash
-   nohup python3 bot.py &
+    ```sh
+    mkdir Marzban-Backup-Restore
+    cd Marzban-Backup-Restore
+    git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
+    cd Backup-And-Restore-Marzban
     ```
 
+2. Run the `run.sh` script and choose "1) Install the bot":
 
-### Commands
+    ```sh
+    chmod +x run.sh
+    ./run.sh
+    ```
+
+3. Enter your bot token and admin chat ID when prompted.
+
+## Update
+
+To update the bot, run the `run.sh` script and choose "2) Update the bot":
+
+```sh
+./run.sh
+```
+
+This will clone the repository again and run the bot.
+
+## Removal
+
+To remove the bot, run the `run.sh` script and choose "3) Remove the bot":
+
+```sh
+./run.sh
+```
+
+This will delete the `Marzban-Backup-Restore` directory.
+
+## Files
+
+- `bot.py`: Main Telegram bot code.
+- `run.sh`: Script for installing, updating, and removing the bot.
+- `requirements.txt`: Python dependencies list.
+- `.env`: Environment variables file (created by `run.sh`).
+
+## Usage
+
+After installing the bot, you can use the following commands in Telegram:
 
 - `/start`: Start the bot and receive a welcome message.
-- `/backup`: Manually trigger a backup.
-- `/restore`: Restore from a backup file sent via Telegram.
-- `/setinterval <minutes>`: Set the backup interval in minutes.
+- `/backup`: Backup the data.
+- `/restore`: Restore the data (after sending the backup file).
+- `/setinterval <minutes>`: Set the backup interval time.
 
-### Backup & Restore Process
-
-1. To manually trigger a backup, send the `/backup` command.
-2. The bot will automatically send backups to the specified chat at the configured interval.
-3. To restore from a backup, send the `/restore` command and then upload the backup file.
-4. The bot will restore the Marzban files and database and notify you upon completion.
+Please note that the bot should be run on a Server with access to the Marzban paths.
 
