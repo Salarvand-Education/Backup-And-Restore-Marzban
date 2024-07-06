@@ -46,7 +46,6 @@ install_bot() {
     cd Backup-And-Restore-Marzban
     create_env_file
     pip install -r requirements.txt
-    nohup python3 bot.py &
     create_systemd_service
     echo "Bot installed."
 }
