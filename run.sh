@@ -18,7 +18,7 @@ create_env_file() {
 create_systemd_service() {
     echo "Creating systemd service..."
     SERVICE_FILE="/etc/systemd/system/marzban-backup-restore.service"
-    WORKING_DIR=/root/Marzban-Backup-Restore/Backup-And-Restore-Marzban
+    WORKING_DIR=/root/Backup-And-Restore-Marzban
     ENV_FILE=$WORKING_DIR/.env
     EXEC_START=/usr/bin/python3 $WORKING_DIR/bot.py
 
