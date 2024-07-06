@@ -23,7 +23,7 @@ To install the bot, follow these steps:
 
     ```sh
     chmod +x run.sh
-    ./run.sh
+    bash run.sh
     ```
 
 3. Enter your bot token and admin chat ID when prompted.
@@ -33,7 +33,7 @@ To install the bot, follow these steps:
 To update the bot, run the `run.sh` script and choose "2) Update the bot":
 
 ```sh
-./run.sh
+bash run.sh
 ```
 
 This will clone the repository again and run the bot.
@@ -43,7 +43,7 @@ This will clone the repository again and run the bot.
 To remove the bot, run the `run.sh` script and choose "3) Remove the bot":
 
 ```sh
-./run.sh
+bash run.sh
 ```
 
 This will delete the `Marzban-Backup-Restore` directory.
