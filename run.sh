@@ -24,11 +24,11 @@ Description=Marzban Backup and Restore Bot
 After=network.target
 
 [Service]
-WorkingDirectory=$(pwd)/Backup-And-Restore-Marzban
-ExecStart=/usr/bin/python3 $(pwd)/Backup-And-Restore-Marzban/bot.py
+WorkingDirectory=/rootMarzban-Backup-Restore/Backup-And-Restore-Marzban
+ExecStart=/usr/bin/python3 /rootMarzban-Backup-Restore/Backup-And-Restore-Marzban/bot.py
 Restart=always
-User=$(whoami)
-EnvironmentFile=$(pwd)/Backup-And-Restore-Marzban/.env
+User=your_user
+EnvironmentFile=/root/Marzban-Backup-Restore/Backup-And-Restore-Marzban/.env
 
 [Install]
 WantedBy=multi-user.target
