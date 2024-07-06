@@ -14,6 +14,31 @@ create_env_file() {
     echo ".env file created."
 }
 
+# Function to create systemd service file
+create_systemd_service() {
+    echo "Creating systemd service..."
+    SERVICE_FILE="/etc/systemd/system/marzban-backup-restore.service"
+    sudo bash -c "cat > $SERVICE_FILE" <<EOL
+[Unit]
+Description=Marzban Backup and Restore Bot
+After=network.target
+
+[Service]
+WorkingDirectory=$(pwd)/Backup-And-Restore-Marzban
+ExecStart=/usr/bin/python3 $(pwd)/Backup-And-Restore-Marzban/bot.py
+Restart=always
+User=$(whoami)
+EnvironmentFile=$(pwd)/Backup-And-Restore-Marzban/.env
+
+[Install]
+WantedBy=multi-user.target
+EOL
+    sudo systemctl daemon-reload
+    sudo systemctl enable marzban-backup-restore.service
+    sudo systemctl start marzban-backup-restore.service
+    echo "Systemd service created and started."
+}
+
 # Function to install the bot
 install_bot() {
     echo "Installing the bot..."
@@ -22,26 +47,30 @@ install_bot() {
     create_env_file
     pip install -r requirements.txt
     nohup python3 bot.py &
+    create_systemd_service
     echo "Bot installed."
 }
 
 # Function to update the bot
 update_bot() {
     echo "Updating the bot..."
-    cd Backup-And-Restore-Marzban
-    pkill -f bot.py 
+    cd Marzban-Backup-Restore
+    sudo systemctl stop marzban-backup-restore.service
     rm -rf Backup-And-Restore-Marzban
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
     echo "Bot updated. Running the bot now..."
-    nohup python bot.py &
+    sudo systemctl start marzban-backup-restore.service
 }
 
 # Function to remove the bot
 remove_bot() {
     echo "Removing the bot..."
+    sudo systemctl stop marzban-backup-restore.service
+    sudo systemctl disable marzban-backup-restore.service
+    sudo rm /etc/systemd/system/marzban-backup-restore.service
+    sudo systemctl daemon-reload
     rm -rf Marzban-Backup-Restore
-    pkill -f bot.py
     echo "Bot removed."
 }
 
