@@ -53,6 +53,9 @@ install_bot() {
     cd Backup-And-Restore-Marzban
     create_env_file
     pip install -r requirements.txt
+    sudo chmod +x bot.py
+    sudo chown -R root:root /root/Backup-And-Restore-Marzban
+    sudo chmod -R 755 /root/Backup-And-Restore-Marzban
     create_systemd_service
     echo "Bot installed."
 }
@@ -65,6 +68,9 @@ update_bot() {
     rm -rf Backup-And-Restore-Marzban
     git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
     cd Backup-And-Restore-Marzban
+    sudo chmod +x bot.py
+    sudo chown -R root:root /root/Backup-And-Restore-Marzban
+    sudo chmod -R 755 /root/Backup-And-Restore-Marzban
     sudo systemctl start marzban-backup-restore.service
     echo "Bot updated and running."
 }
