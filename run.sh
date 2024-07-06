@@ -48,8 +48,6 @@ EOL
 install_bot() {
     echo "Installing the bot..."
     cd /root/Marzban-Backup-Restore
-    git clone https://github.com/Salarvand-Education/Backup-And-Restore-Marzban.git
-    cd Backup-And-Restore-Marzban
     create_env_file
     pip install -r requirements.txt
     sudo chmod +x bot.py
