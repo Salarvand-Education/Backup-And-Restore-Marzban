@@ -21,30 +21,10 @@ To install the bot, follow these steps:
 
  2. Enter your bot token and admin chat ID when prompted.
 
-## Update
-
-To update the bot, run the `run.sh` script and choose "2) Update the bot":
-
-```sh
-Backup-And-Restore-Marzban && bash run.sh
-```
-
-## This will clone the repository again and run the bot.
-
-## Removal
-
-To remove the bot, run the `run.sh` script and choose "3) Remove the bot":
-
-```sh
-Backup-And-Restore-Marzban && bash run.sh
-```
-
-This will delete the `Marzban-Backup-Restore` directory.
-
 ## Files
 
 - `bot.py`: Main Telegram bot code.
-- `run.sh`: Script for installing, updating, and removing the bot.
+- `run.sh`: Script for installing the bot.
 - `requirements.txt`: Python dependencies list.
 - `.env`: Environment variables file (created by `run.sh`).
 
