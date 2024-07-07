@@ -26,7 +26,7 @@ To install the bot, follow these steps:
 To update the bot, run the `run.sh` script and choose "2) Update the bot":
 
 ```sh
-bash run.sh
+Backup-And-Restore-Marzban && bash run.sh
 ```
 
 ## This will clone the repository again and run the bot.
@@ -36,7 +36,7 @@ bash run.sh
 To remove the bot, run the `run.sh` script and choose "3) Remove the bot":
 
 ```sh
-bash run.sh
+Backup-And-Restore-Marzban && bash run.sh
 ```
 
 This will delete the `Marzban-Backup-Restore` directory.
