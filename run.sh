@@ -1,5 +1,6 @@
 #!/bin/bash
 cd Backup-And-Restore-Marzban
+pip intall -r requirements.txt
 
 read -p "Please enter your bot token: " BOT_TOKEN
 read -p "Please enter your admin chat ID: " ADMIN_CHAT_ID
